@@ -1,4 +1,3 @@
-// src/app.module.ts
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
@@ -17,13 +16,13 @@ import { StaffModule } from './staff/staff.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost', // or your MySQL host
-      port: 3306, // or your MySQL port
-      username: 'root', // your MySQL username
-      password: 'Hvsm@0822', // your MySQL password
-      database: 'clinic_db', // the database you created
-      entities: [Staff, Patient, Doctor, Appointment], // Add your entities here
-      synchronize: true, // Auto-create tables based on your entities (for development only)
+      host: process.env.DB_HOST, // Use Heroku Config Vars
+      port: parseInt(process.env.DB_PORT || '3306'), // Use Heroku Config Vars
+      username: process.env.DB_USERNAME, // Use Heroku Config Vars
+      password: process.env.DB_PASSWORD, // Use Heroku Config Vars
+      database: process.env.DB_NAME, // Use Heroku Config Vars
+      entities: [Staff, Patient, Doctor, Appointment],
+      synchronize: true,
     }),
     PatientModule,
     DoctorModule,
