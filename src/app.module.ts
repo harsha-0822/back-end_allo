@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConfigModule } from '@nestjs/config'; // Add this line
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { Staff } from './staff/staff.entity';
@@ -14,6 +15,7 @@ import { StaffModule } from './staff/staff.module';
 
 @Module({
   imports: [
+    ConfigModule.forRoot(), // Add this line
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: process.env.DB_HOST,
