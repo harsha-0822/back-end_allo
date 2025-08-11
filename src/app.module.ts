@@ -16,11 +16,11 @@ import { StaffModule } from './staff/staff.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: process.env.DB_HOST, // Use Heroku Config Vars
-      port: parseInt(process.env.DB_PORT || '3306'), // Use Heroku Config Vars
-      username: process.env.DB_USERNAME, // Use Heroku Config Vars
-      password: process.env.DB_PASSWORD, // Use Heroku Config Vars
-      database: process.env.DB_NAME, // Use Heroku Config Vars
+      host: process.env.DB_HOST,
+      port: parseInt(process.env.DB_PORT || '3306'),
+      username: process.env.DB_USERNAME,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME,
       entities: [Staff, Patient, Doctor, Appointment],
       synchronize: true,
     }),
