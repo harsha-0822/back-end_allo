@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ConfigModule } from '@nestjs/config'; // Add this line
+import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { Staff } from './staff/staff.entity';
@@ -15,14 +15,14 @@ import { StaffModule } from './staff/staff.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(), // Add this line
+    ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: process.env.DB_HOST,
-      port: parseInt(process.env.DB_PORT || '3306'),
-      username: process.env.DB_USERNAME,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_NAME,
+      host: process.env.MYSQL_HOST,
+      port: parseInt(process.env.MYSQL_PORT || '3306'),
+      username: process.env.MYSQL_USER,
+      password: process.env.MYSQL_PASSWORD,
+      database: process.env.MYSQL_DATABASE,
       entities: [Staff, Patient, Doctor, Appointment],
       synchronize: true,
     }),
